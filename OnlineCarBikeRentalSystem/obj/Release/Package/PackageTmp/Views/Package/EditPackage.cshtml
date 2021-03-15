@@ -1,0 +1,57 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.PackageViewModel
+
+@{
+    ViewBag.Title = "EditPackage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Editpackage</h2>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PackageId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PackageHeading, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+
+            @Html.TextArea("PackageHeading", new { @class = "ckeditor", @id = "packageheading" })
+            <script>
+                var editor = CKEDITOR.instances["packageheading"];
+                if (editor) { editor.destroy(true); }
+                CKEDITOR.replace("packageheading");
+            </script>
+            @Html.ValidationMessageFor(model => model.PackageHeading, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ListPackage, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+
+            @Html.TextArea("ListPackage", new { @class = "ckeditor", @id = "aboutme" })
+            <script>
+                var editor = CKEDITOR.instances["aboutme"];
+                if (editor) { editor.destroy(true); }
+                CKEDITOR.replace("aboutme");
+            </script>
+            @Html.ValidationMessageFor(model => model.ListPackage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+            <button type="button" class="btn btn-info">@Html.ActionLink("Back to List", "Index")</button>
+        </div>
+    </div>
+</div>
+}
+<br />
+

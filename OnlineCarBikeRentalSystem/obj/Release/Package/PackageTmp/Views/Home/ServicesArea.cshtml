@@ -1,0 +1,77 @@
+﻿<!--== Service Page Content Start ==-->
+<section id="service-page-wrapper" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @foreach (var item in Model)
+                {
+                    if (item.Id == 1)
+                    {
+                        <!-- Single Services Start -->
+                        <div class="single-service-item">
+                            <div class="service-item-thumb ser-thumb-bg-1" style=" background-image: url(/img/ServicesContent/@item.Image);"></div>
+                            <div class="service-item-content">
+                                <h3>@item.Heading</h3>
+                                <p>@item.Paragraph</p>
+                            </div>
+                        </div>
+                        <!-- Single Services End -->
+                    }
+                    if (item.Id == 2)
+                    {
+                        <!-- Single Services Start -->
+                        <div class="single-service-item">
+                            <div class="service-item-thumb ser-thumb-bg-2 d-lg-none d-md-block"></div>
+                            <div class="service-item-content">
+                                <h3>@item.Heading</h3>
+                                <p>@item.Paragraph</p>
+                            </div>
+                            <div class="service-item-thumb ser-thumb-bg-2 d-none d-lg-block d-md-none" style="background-image: url(/img/ServicesContent/@item.Image);"></div>
+                        </div>
+                        <!-- Single Services End -->
+                    }
+                    if (item.Id == 1003)
+                    {
+                        <!-- Single Services Start -->
+                        <div class="single-service-item">
+                            <div class="service-item-thumb ser-thumb-bg-3" style=" background-image: url(/img/ServicesContent/@item.Image);"></div>
+                            <div class="service-item-content">
+                                <h3>@item.Heading</h3>
+                                <p>@item.Paragraph</p>
+                            </div>
+                        </div>
+                        <!-- Single Services End -->
+                    }
+                    if (item.Id == 1004)
+                    {
+                        <!-- Single Services Start -->
+                        <div class="single-service-item">
+                            <div class="service-item-thumb ser-thumb-bg-4 d-lg-none d-md-block">
+                                <img src="~/assets/img/driver/driver-1.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="service-item-content">
+                                <h3>@item.Heading</h3>
+                                <p>@item.Paragraph</p>
+                            </div>
+                            <div class="service-item-thumb ser-thumb-bg-2 d-none d-lg-block d-md-none" style=" background-image: url(/img/ServicesContent/@item.Image);"></div>
+                        </div>
+                        <!-- Single Services End -->
+                    }
+                    if (item.Id == 1005)
+                    {
+                        <!-- Single Services Start -->
+                        <div class="single-service-item">
+                            <div class="service-item-thumb ser-thumb-bg-3" style=" background-image: url(/img/ServicesContent/@item.Image);"></div>
+                            <div class="service-item-content">
+                                <h3>@item.Heading</h3>
+                                <p>@item.Paragraph</p>
+                            </div>
+                        </div>
+                        <!-- Single Services End -->
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Service Page Content End ==-->

@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Routine Admin  </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/Content/sweet-alert.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+
+    <link href="~/admin-lte/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+
+    <link href="~/admin-lte/css/skins/_all-skins.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="../../index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <script src="~/Scripts/respond.js"></script>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/admin-lte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="/admin-lte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        XYZ- System Admin
+
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href=""><i class="fa fa-sign-out"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/admin-lte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Admin</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="@Url.Action("Dashboard","Admin")">
+                            <i class="fa fa-dashboard"></i>
+                            <span>DASHBOARD</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageBooking","Booking")">
+                            <i class="fa fa-files-o"></i>
+                            <span>Manage Booking</span>
+                            <span class="pull-right-container">
+                                <span class="label label-primary pull-right">4</span>
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageCustomerRecord","CustomerRecord")">
+                            <i class="fa fa-files-o"></i>
+                            <span>Customer Record</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManagePayment","Payment")">
+                            <i class="fa fa-files-o"></i>
+                            <span>Payment Record</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ViewStock","Stock")">
+                            <i class="fa fa-files-o"></i>
+                            <span>VIew Stock</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageBikeCarRecord","BikeCarRecord")">
+                            <i class="fa fa-files-o"></i>
+                            <span>Manage Bike/Car Record</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageCategory","Category")">
+                            <i class="fa fa-files-o"></i>
+                            <span>Manage Category</span>
+                            <span class="pull-right-container">
+                                <span class="label label-primary pull-right">4</span>
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageVendor","Vendor")">
+                            <i class="fa fa-th"></i> <span>Manage Vendor</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageBikeCar","BikeCar")">
+                            <i class="fa fa-first-order"></i> <span>Manage Bike/Car</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                   
+
+
+                    <li>
+                        <a href="@Url.Action("Index","Slider")">
+                            <i class="fa fa-user-plus"></i> <span>Manage Slider</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageServiceSection","ServiceSection")">
+                            <i class="fa fa-user-plus"></i> <span>Manage ServiceSection</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","RentalContent")">
+                            <i class="fa fa-user-plus"></i> <span>Manage RentalContent</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Package")">
+                            <i class="fa fa-user-plus"></i> <span>Manage Package</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageSubMenu","SubMenu")">
+                            <i class="fa fa-user-circle"></i> <span>Manage SubMenu</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","AboutSection")">
+                            <i class="fa fa-user-circle"></i> <span>Manage AboutSection</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Testimonial")">
+                            <i class="fa fa-user-circle"></i> <span>Manage Testimonial</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageServicesContent","ServicesContent")">
+                            <i class="fa fa-user-circle"></i> <span>Manage ServicesContent</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageFaqHeading","Faq")">
+                            <i class="fa fa-user-circle"></i> <span>Manage FaqHeading</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("ManageQA","QA")">
+                                    <i class="fa fa-user-circle"></i> <span>Manage QA</span>
+                                    <span class="pull-right-container">
+
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageDriver","Driver")">
+                            <i class="fa fa-user-circle"></i> <span>Manage Driver</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ManageHelpDesk","HelpDesk")">
+                            <i class="fa fa-user-circle"></i> <span>Manage HelpDesk</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ResponseContact","Contact")">
+                            <i class="fa fa-user-circle"></i> <span>Response Contact</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ChangePassword","Account")">
+                            <i class="fa fa-key"></i> <span>CHANGE PASSWORD</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
+                            <span class="pull-right-container">
+
+                            </span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="min-height: 990px;">
+            @RenderBody()
+
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright © 2019 <a href="#"></a>.</strong> All rights
+            reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+
+
+
+
+
+
+
+
+
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/admin-lte/js/jquery.validate.min.js"></script>
+    <script src="~/admin-lte/js/jquery.validate.unobtrusive.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/admin-lte/js/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/admin-lte/js/notify.min.js"></script>
+    <script src="~/Scripts/sweet-alert.js"></script>
+    <script src="~/admin-lte/js/adminlte.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <!-- AdminLTE for demo purposes -->
+
+
+</body>
+
+
+</html>

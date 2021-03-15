@@ -1,0 +1,57 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.BikeCarRecordViewModel
+
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "BikeCarRecord", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.BikeCarRecordId)
+
+
+        <div class="form-group-inner">
+            <div class="row">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Bike/Car Name</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.VehicleId, new SelectList(ViewBag.bikecar, "VehicleId", "Bike_CarName"), "Select Bike/Car", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NoPlate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.NoPlate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Bike/Car Number Palte Number" } })
+                        @Html.ValidationMessageFor(model => model.NoPlate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EngieneNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.EngieneNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Bike/Car Engiene Number" } })
+                        @Html.ValidationMessageFor(model => model.EngieneNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9">
+                <div class="login-horizental cancel-wp pull-left">
+                    <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+}
+
+
+

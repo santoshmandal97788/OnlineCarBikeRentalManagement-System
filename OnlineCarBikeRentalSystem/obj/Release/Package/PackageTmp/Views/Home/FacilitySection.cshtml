@@ -1,0 +1,19 @@
+﻿<!--== Our Facility Content Start ==-->
+<section id="our-facility" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <!-- Single Facility Start -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-our-facility">
+                        <h3>@item.Heading</h3>
+
+                        @Html.Raw(item.FeatureList)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--== Our Facility Content End ==-->

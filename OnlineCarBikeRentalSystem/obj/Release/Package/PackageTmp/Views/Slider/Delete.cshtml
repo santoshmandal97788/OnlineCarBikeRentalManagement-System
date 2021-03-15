@@ -1,0 +1,50 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.SliderViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<h3 class="text-center" >Are you sure you want to delete Slider Content?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal" style="margin-left:10px;">
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.TextBoxFor(model => model.Title,new {@class="form-control" }) <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @*@Html.TextAreaFor(model => model.Description, new { @class = "form-control" })*@
+            @Html.TextArea("Description", new { @class = "ckeditor", @id = "aboutme" })
+            <script>
+                var editor = CKEDITOR.instances["aboutme"];
+                if (editor) { editor.destroy(true); }
+                CKEDITOR.replace("aboutme");
+            </script>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color" style="margin-left:190px;">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @*@Html.ActionLink("Back to List", "Index")*@
+        <button type="button" class="btn btn-info">@Html.ActionLink("Back to List", "Index")</button>
+
+    </div>
+    }
+</div>

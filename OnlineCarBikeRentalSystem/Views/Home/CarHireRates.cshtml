@@ -1,0 +1,102 @@
+﻿@using OnlineCarBikeRentalSystem.Models;
+@using OnlineCarBikeRentalSystem.Models.Services
+@{
+    ViewBag.Title = "CarHireRates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Slider
+{
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Login</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+}
+
+<!--== About Page Content Start ==-->
+<section id="about-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Car Hire Rates</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <!-- About Content Start -->
+            <div class="col-lg-12">
+                <div class="display-table">
+                    <div class="display-table-cell">
+                        <div class="about-content">
+                            <p>Lorem simply dummy is a texted of the printing costed and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.text ever since the 1500s, when an unknown printer took a galley of type.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== About Page Content End ==-->
+<!--== Our Facility Content Start ==-->
+<section id="our-facility" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Single Facility Start -->
+            <div class="col-lg-12 col-md-6">
+                <div class="single-our-facility">
+                    <div class="row">
+                        <h2 class="text-center" style="color:#ff9900">Car Hire Rates</h2>
+                        <table class="table table-striped">
+                            <thead style="color:#ff9900">
+                                <tr>
+                                    <th scope="col">Car Model</th>
+                                    <th scope="col">Engiene Capacity</th>
+                                    <th scope="col">Rate/hr</th>
+                                    <th scope="col">Rate/Day</th>
+                                    <th scope="col">Rate/Week</th>
+                                    <th scope="col">Rate/Month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    List<tblBikeCar> price = PricingDB.GetAllCarPrice();
+                                    foreach (var item in price)
+                                    {
+                                        <tr>
+                                            <td>@item.Bike_CarName</td>
+                                            <td>@item.EngieneCC CC</td>
+                                            <td>@item.PricePerHour</td>
+                                            <td>@item.PricePerDay</td>
+                                            <td>@item.PricePerWeek</td>
+                                            <td>@item.PricePermonth</td>
+                                            <td><a href="#" class="rent-btn">Book Now</a></td>
+                                        </tr>
+
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

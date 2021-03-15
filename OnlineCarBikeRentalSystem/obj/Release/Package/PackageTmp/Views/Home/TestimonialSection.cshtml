@@ -1,0 +1,34 @@
+﻿<!--== Testimonials Area Start ==-->
+<section id="testimonial-area" class="section-padding">
+    <div class="container">
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Testimonials</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Lorem ipsum dolor sit amet elit.</p>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12 m-auto">
+                    <div class="testimonial-content">
+                        <!--== Single Testimoial Start ==-->
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-testimonial">
+                                <p>@item.Paragraph</p>
+                                <h3>@item.Username</h3>
+                                <div class="client-logo">
+                                    <img src="~/img/Testimonial/@item.Image" alt="JSOFT">
+                                </div>
+                            </div>
+                        }                           
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!--== Testimonials Area End ==-->

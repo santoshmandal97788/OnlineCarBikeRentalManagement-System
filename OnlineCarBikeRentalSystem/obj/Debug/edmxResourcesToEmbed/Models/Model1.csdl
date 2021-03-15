@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineCarBikeRentalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_tblUserRoles_tblRoles" FromRole="Roles" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblAboutU">
+    <Key>
+      <PropertyRef Name="AboutUsId" />
+    </Key>
+    <Property Name="AboutUsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubHeadingParagraph" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CardHeading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CardParagraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblBikeCar">
+    <Key>
+      <PropertyRef Name="VehicleId" />
+    </Key>
+    <Property Name="VehicleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorId" Type="Int32" />
+    <Property Name="Bike_CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EngieneCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PricePerHour" Type="Int32" />
+    <Property Name="PricePerDay" Type="Int32" />
+    <Property Name="PricePerWeek" Type="Int32" />
+    <Property Name="PricePermonth" Type="Int32" />
+    <Property Name="FuelUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SmallImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LargeImgae" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblVendor" Relationship="Self.FK_tblBikeCar_tblVendor" FromRole="tblBikeCar" ToRole="tblVendor" />
+    <NavigationProperty Name="tblBikeCarRecords" Relationship="Self.FK_tblBikeCarRecord_tblBikeCar" FromRole="tblBikeCar" ToRole="tblBikeCarRecord" />
+    <NavigationProperty Name="tblBookings" Relationship="Self.FK_tblBooking_tblBikeCar" FromRole="tblBikeCar" ToRole="tblBooking" />
+    <NavigationProperty Name="tblStocks" Relationship="Self.FK_tblStock_tblBikeCar" FromRole="tblBikeCar" ToRole="tblStock" />
+  </EntityType>
+  <EntityType Name="tblBikeCarRecord">
+    <Key>
+      <PropertyRef Name="BikeCarRecordId" />
+    </Key>
+    <Property Name="BikeCarRecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="NoPlate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EngieneNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBikeCar" Relationship="Self.FK_tblBikeCarRecord_tblBikeCar" FromRole="tblBikeCarRecord" ToRole="tblBikeCar" />
+    <NavigationProperty Name="tblCustomerRecords" Relationship="Self.FK_tblCustomerRecord_tblBikeCarRecord" FromRole="tblBikeCarRecord" ToRole="tblCustomerRecord" />
+  </EntityType>
+  <EntityType Name="tblBooking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookingDate" Type="DateTime" Precision="0" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="PickUpDate" Type="DateTime" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+    <Property Name="UserId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HireDetails" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBikeCar" Relationship="Self.FK_tblBooking_tblBikeCar" FromRole="tblBooking" ToRole="tblBikeCar" />
+    <NavigationProperty Name="tblCustomerRecords" Relationship="Self.FK_tblCustomerRecord_tblBooking" FromRole="tblBooking" ToRole="tblCustomerRecord" />
+    <NavigationProperty Name="tblPayments" Relationship="Self.FK_tblPayment_tblBooking" FromRole="tblBooking" ToRole="tblPayment" />
+  </EntityType>
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblCategory" FromRole="tblCategory" ToRole="tblVendor" />
+  </EntityType>
+  <EntityType Name="tblComment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblContact">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblCustomerRecord">
+    <Key>
+      <PropertyRef Name="CustomerRecordId" />
+    </Key>
+    <Property Name="CustomerRecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookingId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BikeCarRecordId" Type="Int32" />
+    <Property Name="CitizenshipNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBikeCarRecord" Relationship="Self.FK_tblCustomerRecord_tblBikeCarRecord" FromRole="tblCustomerRecord" ToRole="tblBikeCarRecord" />
+    <NavigationProperty Name="tblBooking" Relationship="Self.FK_tblCustomerRecord_tblBooking" FromRole="tblCustomerRecord" ToRole="tblBooking" />
+    <NavigationProperty Name="tblPayments" Relationship="Self.FK_tblPayment_tblCustomerRecord" FromRole="tblCustomerRecord" ToRole="tblPayment" />
+  </EntityType>
+  <EntityType Name="tblDriver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DriverCategory" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblFaqHeading">
+    <Key>
+      <PropertyRef Name="FaqId" />
+    </Key>
+    <Property Name="FaqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FaqHeading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblFaqQAs" Relationship="Self.FK_tblFaqQA_tblFaqHeading" FromRole="tblFaqHeading" ToRole="tblFaqQA" />
+  </EntityType>
+  <EntityType Name="tblFaqQA">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FaqId" Type="Int32" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblFaqHeading" Relationship="Self.FK_tblFaqQA_tblFaqHeading" FromRole="tblFaqQA" ToRole="tblFaqHeading" />
+  </EntityType>
+  <EntityType Name="tblHelpDesk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SmallImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LargeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblMenu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblSubMenus" Relationship="Self.FK_tblSubMenu_tblMenu" FromRole="tblMenu" ToRole="tblSubMenu" />
+  </EntityType>
+  <EntityType Name="tblPackageContent">
+    <Key>
+      <PropertyRef Name="PackageId" />
+    </Key>
+    <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageHeading" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ListPackage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblPayment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerRecordId" Type="Int32" />
+    <Property Name="BookingId" Type="Int32" />
+    <Property Name="TotalPrice" Type="Int32" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+    <Property Name="ReceivedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBooking" Relationship="Self.FK_tblPayment_tblBooking" FromRole="tblPayment" ToRole="tblBooking" />
+    <NavigationProperty Name="tblCustomerRecord" Relationship="Self.FK_tblPayment_tblCustomerRecord" FromRole="tblPayment" ToRole="tblCustomerRecord" />
+  </EntityType>
+  <EntityType Name="tblRentalContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FeatureList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblServicesContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Paragraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblServiceSection">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Heading" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Paragraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSlider">
+    <Key>
+      <PropertyRef Name="SliderId" />
+    </Key>
+    <Property Name="SliderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblStock">
+    <Key>
+      <PropertyRef Name="StockId" />
+    </Key>
+    <Property Name="StockId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="TotalBike_Car" Type="Int32" />
+    <NavigationProperty Name="tblBikeCar" Relationship="Self.FK_tblStock_tblBikeCar" FromRole="tblStock" ToRole="tblBikeCar" />
+  </EntityType>
+  <EntityType Name="tblSubMenu">
+    <Key>
+      <PropertyRef Name="SubMenuId" />
+    </Key>
+    <Property Name="SubMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int32" />
+    <Property Name="SubMenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblMenu" Relationship="Self.FK_tblSubMenu_tblMenu" FromRole="tblSubMenu" ToRole="tblMenu" />
+  </EntityType>
+  <EntityType Name="tblTestimonial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Paragraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_tblUserRoles_tblUser" FromRole="tblUser" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="tblVendor">
+    <Key>
+      <PropertyRef Name="VendorId" />
+    </Key>
+    <Property Name="VendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBikeCars" Relationship="Self.FK_tblBikeCar_tblVendor" FromRole="tblVendor" ToRole="tblBikeCar" />
+    <NavigationProperty Name="tblCategory" Relationship="Self.FK_tblVendor_tblCategory" FromRole="tblVendor" ToRole="tblCategory" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRolesId" />
+    </Key>
+    <Property Name="UserRolesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_tblUserRoles_tblRoles" FromRole="UserRoles" ToRole="Roles" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserRoles_tblUser" FromRole="UserRoles" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblUserRoles_tblRoles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBikeCar_tblVendor">
+    <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="0..1" />
+    <End Role="tblBikeCar" Type="Self.tblBikeCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="tblBikeCar">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBikeCarRecord_tblBikeCar">
+    <End Role="tblBikeCar" Type="Self.tblBikeCar" Multiplicity="0..1" />
+    <End Role="tblBikeCarRecord" Type="Self.tblBikeCarRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBikeCar">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="tblBikeCarRecord">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBooking_tblBikeCar">
+    <End Role="tblBikeCar" Type="Self.tblBikeCar" Multiplicity="0..1" />
+    <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBikeCar">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="tblBooking">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblStock_tblBikeCar">
+    <End Role="tblBikeCar" Type="Self.tblBikeCar" Multiplicity="0..1" />
+    <End Role="tblStock" Type="Self.tblStock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBikeCar">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="tblStock">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomerRecord_tblBikeCarRecord">
+    <End Role="tblBikeCarRecord" Type="Self.tblBikeCarRecord" Multiplicity="0..1" />
+    <End Role="tblCustomerRecord" Type="Self.tblCustomerRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBikeCarRecord">
+        <PropertyRef Name="BikeCarRecordId" />
+      </Principal>
+      <Dependent Role="tblCustomerRecord">
+        <PropertyRef Name="BikeCarRecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomerRecord_tblBooking">
+    <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="0..1" />
+    <End Role="tblCustomerRecord" Type="Self.tblCustomerRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblCustomerRecord">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPayment_tblBooking">
+    <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="0..1" />
+    <End Role="tblPayment" Type="Self.tblPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblPayment">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVendor_tblCategory">
+    <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="0..1" />
+    <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="tblVendor">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPayment_tblCustomerRecord">
+    <End Role="tblCustomerRecord" Type="Self.tblCustomerRecord" Multiplicity="0..1" />
+    <End Role="tblPayment" Type="Self.tblPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomerRecord">
+        <PropertyRef Name="CustomerRecordId" />
+      </Principal>
+      <Dependent Role="tblPayment">
+        <PropertyRef Name="CustomerRecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFaqQA_tblFaqHeading">
+    <End Role="tblFaqHeading" Type="Self.tblFaqHeading" Multiplicity="0..1" />
+    <End Role="tblFaqQA" Type="Self.tblFaqQA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFaqHeading">
+        <PropertyRef Name="FaqId" />
+      </Principal>
+      <Dependent Role="tblFaqQA">
+        <PropertyRef Name="FaqId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSubMenu_tblMenu">
+    <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1" />
+    <End Role="tblSubMenu" Type="Self.tblSubMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="tblSubMenu">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRoles_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineCarBikeRentalDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tblAboutUs" EntityType="Self.tblAboutU" />
+    <EntitySet Name="tblBikeCars" EntityType="Self.tblBikeCar" />
+    <EntitySet Name="tblBikeCarRecords" EntityType="Self.tblBikeCarRecord" />
+    <EntitySet Name="tblBookings" EntityType="Self.tblBooking" />
+    <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
+    <EntitySet Name="tblComments" EntityType="Self.tblComment" />
+    <EntitySet Name="tblContacts" EntityType="Self.tblContact" />
+    <EntitySet Name="tblCustomerRecords" EntityType="Self.tblCustomerRecord" />
+    <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
+    <EntitySet Name="tblFaqHeadings" EntityType="Self.tblFaqHeading" />
+    <EntitySet Name="tblFaqQAs" EntityType="Self.tblFaqQA" />
+    <EntitySet Name="tblHelpDesks" EntityType="Self.tblHelpDesk" />
+    <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
+    <EntitySet Name="tblPackageContents" EntityType="Self.tblPackageContent" />
+    <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
+    <EntitySet Name="tblRentalContents" EntityType="Self.tblRentalContent" />
+    <EntitySet Name="tblServicesContents" EntityType="Self.tblServicesContent" />
+    <EntitySet Name="tblServiceSections" EntityType="Self.tblServiceSection" />
+    <EntitySet Name="tblSliders" EntityType="Self.tblSlider" />
+    <EntitySet Name="tblStocks" EntityType="Self.tblStock" />
+    <EntitySet Name="tblSubMenus" EntityType="Self.tblSubMenu" />
+    <EntitySet Name="tblTestimonials" EntityType="Self.tblTestimonial" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblVendors" EntityType="Self.tblVendor" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_tblUserRoles_tblRoles" Association="Self.FK_tblUserRoles_tblRoles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBikeCar_tblVendor" Association="Self.FK_tblBikeCar_tblVendor">
+      <End Role="tblVendor" EntitySet="tblVendors" />
+      <End Role="tblBikeCar" EntitySet="tblBikeCars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBikeCarRecord_tblBikeCar" Association="Self.FK_tblBikeCarRecord_tblBikeCar">
+      <End Role="tblBikeCar" EntitySet="tblBikeCars" />
+      <End Role="tblBikeCarRecord" EntitySet="tblBikeCarRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBooking_tblBikeCar" Association="Self.FK_tblBooking_tblBikeCar">
+      <End Role="tblBikeCar" EntitySet="tblBikeCars" />
+      <End Role="tblBooking" EntitySet="tblBookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblStock_tblBikeCar" Association="Self.FK_tblStock_tblBikeCar">
+      <End Role="tblBikeCar" EntitySet="tblBikeCars" />
+      <End Role="tblStock" EntitySet="tblStocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomerRecord_tblBikeCarRecord" Association="Self.FK_tblCustomerRecord_tblBikeCarRecord">
+      <End Role="tblBikeCarRecord" EntitySet="tblBikeCarRecords" />
+      <End Role="tblCustomerRecord" EntitySet="tblCustomerRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomerRecord_tblBooking" Association="Self.FK_tblCustomerRecord_tblBooking">
+      <End Role="tblBooking" EntitySet="tblBookings" />
+      <End Role="tblCustomerRecord" EntitySet="tblCustomerRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPayment_tblBooking" Association="Self.FK_tblPayment_tblBooking">
+      <End Role="tblBooking" EntitySet="tblBookings" />
+      <End Role="tblPayment" EntitySet="tblPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVendor_tblCategory" Association="Self.FK_tblVendor_tblCategory">
+      <End Role="tblCategory" EntitySet="tblCategories" />
+      <End Role="tblVendor" EntitySet="tblVendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPayment_tblCustomerRecord" Association="Self.FK_tblPayment_tblCustomerRecord">
+      <End Role="tblCustomerRecord" EntitySet="tblCustomerRecords" />
+      <End Role="tblPayment" EntitySet="tblPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFaqQA_tblFaqHeading" Association="Self.FK_tblFaqQA_tblFaqHeading">
+      <End Role="tblFaqHeading" EntitySet="tblFaqHeadings" />
+      <End Role="tblFaqQA" EntitySet="tblFaqQAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSubMenu_tblMenu" Association="Self.FK_tblSubMenu_tblMenu">
+      <End Role="tblMenu" EntitySet="tblMenus" />
+      <End Role="tblSubMenu" EntitySet="tblSubMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRoles_tblUser" Association="Self.FK_tblUserRoles_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

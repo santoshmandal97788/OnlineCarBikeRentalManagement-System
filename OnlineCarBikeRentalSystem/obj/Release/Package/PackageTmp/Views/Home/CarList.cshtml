@@ -1,0 +1,207 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@model IPagedList<OnlineCarBikeRentalSystem.Models.tblBikeCar>
+@{
+    ViewBag.Title = "CarList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Slider
+{
+    <!--== Page Title Area Start ==-->
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Our Cars</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+    <!--== Page Title Area End ==-->
+}
+
+
+<!--== Choose Car Area Start ==-->
+<section id="choose-car" class="section-padding padd">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+
+                <div class="section-title  text-center">
+                    <h2>Choose your Car</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <!-- Section Title End -->
+
+            </div>
+        </div>
+
+        @using (Html.BeginForm("CarList", "Home", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="search">
+                    <div style="float:left">
+                        <label for="" style="font-weight:bold">Search Car:</label>
+                    </div>
+                    <div style="float:left; padding-left:10px">
+                        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, "", new { @class = "form-control" })
+                    </div>
+                    <div style="float:left; padding-left:10px">
+
+                        <input type="submit" value="Search" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+        <div class="row">
+            <!-- Choose Area Content Start -->
+            <div class="col-lg-12">
+                <div class="choose-ur-cars">
+                    @*<div class="row">*@
+                    @*<div class="col-lg-3">
+                            <!-- Choose Filtering Menu Start -->
+                            <div class="home2-car-filter">
+                                <a href="#" data-filter="*" class="active">all</a>
+                                <a href="#" data-filter=".con">Conver</a>
+                                <a href="#" data-filter=".hat">Truck</a>
+                                <a href="#" data-filter=".mpv">MPV</a>
+                                <a href="#" data-filter=".sedan">Sedan</a>
+                                <a href="#" data-filter=".suv">SUV</a>
+                            </div>
+                            <!-- Choose Filtering Menu End -->
+                        </div>*@
+                    <div class="col-lg-12">
+                        <!-- Choose Cars Content-wrap -->
+                        <div class="row popular-car-gird">
+
+                            @if (Model.Count() == 0)
+                            {
+                                <div class="row">
+                                    <div class="text-center center">
+                                        <p style="padding-left:400px !important; font-weight:bold;">
+                                            <i style="color:#ffd000; font-size:25px;" class="fa fa-exclamation-triangle"></i>
+                                            No Data were found<br />
+                                            <a href="@Url.Action("CarList","Home")">Back</a>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            }
+                            else
+
+
+
+
+                            {
+
+                                //foreach (var item in Model)
+                                @*@{
+                                    List<tblBikeCar> myitem = BikeCarDB.GetAllBike();*@
+                                foreach (var item in Model)
+                                {
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-4 con suv mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="/img/bikecar/@item.LargeImgae">
+
+                                                    <img class="" src="/img/bikecar/@item.SmallImage" alt="JSOFT">
+                                                    @*<img src="~/assets/img/car/ktm.jpeg" />*@
+                                                </a>
+
+
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#"> @item.Bike_CarName  @item.EngieneCC CC</a>
+
+                                                    <span class="price"><i class="fa fa-tag"></i>RS- @item.PricePerHour /Hr</span>
+
+
+                                                </h3>
+
+
+
+                                                <div class="p-car-feature">
+                                                    <p><span style="font-weight:bold;">Fuel Used-</span><span style="color:yellow">@item.FuelUsed</span></p>
+                                                    <a style="margin-left:213px;" href="#" class="rent-btn">Book Now</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                            <!-- Single Popular Car End -->
+
+                        </div>
+                        <!-- Choose Cars Content-wrap -->
+                    </div>
+
+                </div>
+            </div>
+            @*</div>*@
+            <!-- Choose Area Content End -->
+        </div>
+    </div>
+
+</section>
+
+<!--== Choose Car Area End ==-->
+<!-- Page Pagination Start -->
+<section id="car-list-area" @*class="section-padding padding-manual*@ ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="page-pagi">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination ">
+
+
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                            @Html.PagedListPager(Model, Page_No =>Url.Action("CarList",
+                                new { Page_No, Sorting_Order= ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</section>
+@*@Html.PagedListPager(Model, page => Url.Action("CarList", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })*@
+<!-- Page Pagination End -->
+
+<style>
+    .search {
+        width: 100%;
+        height: 59px;
+        margin-left: 703px;
+    }
+
+    .padd {
+        padding-bottom: 0px !important;
+    }
+
+    .pagination {
+        margin-right: 67px;
+        float: right;
+    }
+</style>

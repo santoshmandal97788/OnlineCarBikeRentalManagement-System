@@ -1,0 +1,447 @@
+﻿@*@model OnlineCarBikeRentalSystem.Models.tblSlider*@
+@model IEnumerable<OnlineCarBikeRentalSystem.Models.tblSlider>
+@using OnlineCarBikeRentalSystem.Models;
+@using OnlineCarBikeRentalSystem.Models.Services
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{Html.RenderAction("SliderSection");}
+
+
+@{Html.RenderAction("AboutSection");}
+<!--== Services Area Start ==-->
+@{Html.RenderAction("ServiceSection");}
+<!--== Services Area End ==-->
+<!--== Fun Fact Area Start ==-->
+<section id="funfact-area" class="overlay section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11 col-md-12 m-auto">
+                <div class="funfact-content-wrap">
+                    <div class="row">
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-smile-o"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">550</span>+</p>
+                                    <h4>HAPPY CLIENTS</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-car"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">250</span>+</p>
+                                    <h4>CARS IN STOCK</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">50</span>+</p>
+                                    <h4>office in cities</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Fun Fact Area End ==-->
+<!--== Choose Car Area Start ==-->
+<section id="choose-car" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Choose your Car</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <!-- Choose Area Content Start -->
+            <div class="col-lg-12">
+                <div class="choose-ur-cars">
+                    <div class="row">
+                        @*<div class="col-lg-3">
+                                <!-- Choose Filtering Menu Start -->
+                                <div class="home2-car-filter">
+                                    <a href="#" data-filter="*" class="active">all</a>
+                                    <a href="#" data-filter=".con">Conver</a>
+                                    <a href="#" data-filter=".hat">Truck</a>
+                                    <a href="#" data-filter=".mpv">MPV</a>
+                                    <a href="#" data-filter=".sedan">Sedan</a>
+                                    <a href="#" data-filter=".suv">SUV</a>
+                                </div>
+                                <!-- Choose Filtering Menu End -->
+                            </div>*@
+                        <div class="col-lg-12">
+                            <!-- Choose Cars Content-wrap -->
+                            <div class="row popular-car-gird">
+
+                                @{
+                                    List<tblBikeCar> myitem1 = BikeCarDB.GetAllCars();
+                                    foreach (var item in myitem1)
+                                    {
+                                        <!-- Single Popular Car Start -->
+                                        <div class="col-lg-4 col-md-4 con suv mpv">
+                                            <div class="single-popular-car">
+                                                <div class="p-car-thumbnails">
+                                                    <a class="car-hover" href="/img/bikecar/@item.LargeImgae">
+
+                                                        <img class="" src="/img/bikecar/@item.SmallImage" alt="JSOFT" >
+                                                    </a>
+
+
+                                                </div>
+                                                <div class="p-car-content">
+                                                    <h3>
+                                                        <a href="#"> @item.Bike_CarName  @item.EngieneCC CC</a>
+
+                                                        <span class="price"><i class="fa fa-tag"></i>RS- @item.PricePerHour /Hr</span>
+
+
+                                                    </h3>
+
+
+
+                                                    <div class="p-car-feature">
+                                                        <p><span style="font-weight:bold;">Fuel Used-</span><span style="color:yellow">@item.FuelUsed</span></p>
+                                                        <a style="margin-left:223px;" href="@Url.Action("BookBikeCar","Booking")" class="rent-btn">Book Now</a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <!-- Single Popular Car End -->
+                                <a class="readmore-btn viewcar-btn" href="@Url.Action("CarList","Home")">View All Cars<i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                            <!-- Choose Cars Content-wrap -->
+                        </div>
+                    </div>
+                </div>
+                @*</div>*@
+                <!-- Choose Area Content End -->
+            </div>
+        </div>
+</section>
+<!--== Choose Car Area End ==-->
+<!--== Choose Bike Area Start ==-->
+<section id="choose-car" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Choose your Bike</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <!-- Choose Area Content Start -->
+            <div class="col-lg-12">
+                <div class="choose-ur-cars">
+                    @*<div class="row">*@
+                    @*<div class="col-lg-3">
+                            <!-- Choose Filtering Menu Start -->
+                            <div class="home2-car-filter">
+                                <a href="#" data-filter="*" class="active">all</a>
+                                <a href="#" data-filter=".con">Conver</a>
+                                <a href="#" data-filter=".hat">Truck</a>
+                                <a href="#" data-filter=".mpv">MPV</a>
+                                <a href="#" data-filter=".sedan">Sedan</a>
+                                <a href="#" data-filter=".suv">SUV</a>
+                            </div>
+                            <!-- Choose Filtering Menu End -->
+                        </div>*@
+                    <div class="col-lg-12">
+                        <!-- Choose Cars Content-wrap -->
+                        <div class="row popular-car-gird">
+
+                            @{
+                                List<tblBikeCar> myitem = BikeCarDB.GetAllBike();
+                                foreach (var item in myitem)
+                                {
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-4 con suv mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="/img/bikecar/@item.LargeImgae">
+
+                                                    <img class="" src="/img/bikecar/@item.SmallImage" alt="JSOFT" style="height:191.25px; width:340px;">
+                                                    @*<img src="~/assets/img/car/ktm.jpeg" />*@
+                                                </a>
+                                            </div>
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">@*Dodge Ram 1500*@ @item.Bike_CarName  @item.EngieneCC CC</a>
+
+                                                    <span class="price"><i class="fa fa-tag"></i>RS- @item.PricePerHour /Hr</span>
+                                                </h3>
+                                                <div class="p-car-feature">
+                                                    <p><span style="font-weight:bold;">Fuel Used-</span><span style="color:yellow">@item.FuelUsed</span></p>
+                                                    <a style="margin-left:213px;" href="@Url.Action("BookBikeCar","Booking")" class="rent-btn">Book Now</a>
+                                                    <button> </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <!-- Single Popular Car End -->
+
+                        </div>
+                        <!-- Choose Cars Content-wrap -->
+                    </div>
+                </div>
+
+            </div>
+            @*</div>*@
+            <a class="readmore-btn viewbike-btn" href="@Url.Action("BikeList","Home"@*,new {id=0 }*@)">View All Bikes<i class="fa fa-long-arrow-right"></i></a>
+
+            <!-- Choose Area Content End -->
+        </div>
+    </div>
+</section>
+<!--== Choose Car Area End ==-->
+<!--== Mobile App Area Start ==-->
+<div id="mobileapp-video-bg"></div>
+<section id="mobile-app-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mobile-app-content">
+                    <h2>SAVE 30% WITH THE APP</h2>
+                    <p>Easy &amp; Fast - Book a car in 60 seconds</p>
+                    <div class="app-btns">
+                        <a href="#"><i class="fa fa-android"></i> Android Store</a>
+                        <a href="#"><i class="fa fa-apple"></i> Apple Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Mobile App Area End ==-->
+<!--== Articles Area Start ==-->
+<section id="tips-article-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Tips and articles</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <!-- Articles Content Wrap Start -->
+        <div class="row">
+            <!-- Single Articles Start -->
+            <div class="col-lg-12">
+                <article class="single-article">
+                    <div class="row">
+                        <!-- Articles Thumbnail Start -->
+                        <div class="col-lg-5">
+                            <div class="article-thumb">
+                                <img src="/assets/img/article/arti-thumb-1.jpg" alt="JSOFT">
+                            </div>
+                        </div>
+                        <!-- Articles Thumbnail End -->
+                        <!-- Articles Content Start -->
+                        <div class="col-lg-7">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <div class="article-body">
+                                        <h3><a href="article-details.html">Wliquam sit amet urna eullam</a></h3>
+                                        <div class="article-meta">
+                                            <a href="#" class="author">By :: <span>Admin</span></a>
+                                            <a href="#" class="commnet">Comments :: <span>10</span></a>
+                                        </div>
+
+                                        <div class="article-date">25 <span class="month">jan</span></div>
+
+                                        <p>Wlam aiber vestibulum fringilla oremedad ipsum dolor sit amet consectetur adipisicing elit sed doned eiusmod tempored incididunt ut labore et dolore magna aliquaa enimd ad minim veniad.</p>
+
+                                        <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Articles Content End -->
+                    </div>
+                </article>
+            </div>
+            <!-- Single Articles End -->
+            <!-- Single Articles Start -->
+            <div class="col-lg-12">
+                <article class="single-article middle">
+                    <div class="row">
+
+                        <!-- Articles Thumbnail Start -->
+                        <div class="col-lg-5 d-xl-none">
+                            <div class="article-thumb">
+                                <img src="/assets/img/article/arti-thumb-2.jpg" alt="JSOFT">
+                            </div>
+                        </div>
+                        <!-- Articles Thumbnail End -->
+                        <!-- Articles Content Start -->
+                        <div class="col-lg-7">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <div class="article-body">
+                                        <h3><a href="article-details.html">fringilla oremedad ipsum dolor sit</a></h3>
+                                        <div class="article-meta">
+                                            <a href="#" class="author">By :: <span>Admin</span></a>
+                                            <a href="#" class="commnet">Comments :: <span>10</span></a>
+                                        </div>
+
+                                        <div class="article-date">14<span class="month">feb</span></div>
+
+                                        <p>Wlam aiber vestibulum fringilla oremedad ipsum dolor sit amet consectetur adipisicing elit sed doned eiusmod tempored incididunt ut labore et dolore magna aliquaa enimd ad minim veniad.</p>
+
+                                        <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Articles Content End -->
+                        <!-- Articles Thumbnail Start -->
+                        <div class="col-lg-5 d-none d-xl-block">
+                            <div class="article-thumb">
+                                <img src="/assets/img/article/arti-thumb-2.jpg" alt="JSOFT">
+                            </div>
+                        </div>
+                        <!-- Articles Thumbnail End -->
+                    </div>
+                </article>
+            </div>
+            <!-- Single Articles End -->
+            <!-- Single Articles Start -->
+            <div class="col-lg-12">
+                <article class="single-article">
+                    <div class="row">
+                        <!-- Articles Thumbnail Start -->
+                        <div class="col-lg-5">
+                            <div class="article-thumb">
+                                <img src="/assets/img/article/arti-thumb-3.jpg" alt="JSOFT">
+                            </div>
+                        </div>
+                        <!-- Articles Thumbnail End -->
+                        <!-- Articles Content Start -->
+                        <div class="col-lg-7">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <div class="article-body">
+                                        <h3><a href="article-details.html">Tempored incididunt ut labore</a></h3>
+                                        <div class="article-meta">
+                                            <a href="#" class="author">By :: <span>Admin</span></a>
+                                            <a href="#" class="commnet">Comments :: <span>10</span></a>
+                                        </div>
+
+                                        <div class="article-date">17 <span class="month">feb</span></div>
+
+                                        <p>Wlam aiber vestibulum fringilla oremedad ipsum dolor sit amet consectetur adipisicing elit sed doned eiusmod tempored incididunt ut labore et dolore magna aliquaa enimd ad minim veniad.</p>
+
+                                        <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Articles Content End -->
+                    </div>
+                </article>
+            </div>
+            <!-- Single Articles End -->
+        </div>
+        <!-- Articles Content Wrap End -->
+    </div>
+</section>
+<!--== Articles Area End ==-->
+<style>
+    .viewcar-btn {
+        position: absolute !important;
+        left: 497px !important;
+        /*top: 675px !important;*/
+    }
+
+    .viewbike-btn {
+        position: relative !important;
+        left: 497px !important;
+        top: -10px !important;
+    }
+</style>
+
+
+
+
+
+
+@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <div class="col-lg-4" style="background:black">
+                        <a class="logo">
+                            <img src="/assets/img/logo.png" alt="JSOFT">
+                        </a>
+                    </div>
+                    <h5 class="modal-title" id="exampleModalLabel" style="color:#ffd000">Booking Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>*@

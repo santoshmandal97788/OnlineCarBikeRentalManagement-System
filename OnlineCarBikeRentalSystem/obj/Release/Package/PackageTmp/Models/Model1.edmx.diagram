@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3eb2b719ae3741678ecf7e0e9c4d5b4e" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.Role" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblAboutU" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblBikeCar" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblBikeCarRecord" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblBooking" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblCategory" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblComment" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblContact" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblCustomerRecord" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblDriver" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblFaqHeading" Width="1.5" PointX="11.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblFaqQA" Width="1.5" PointX="14" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblHelpDesk" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblMenu" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblPackageContent" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblPayment" Width="1.5" PointX="12" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblRentalContent" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblServicesContent" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblServiceSection" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblSlider" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblStock" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblSubMenu" Width="1.5" PointX="12" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblTestimonial" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblUser" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.tblVendor" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineCarBikeRentalDBModel.UserRole" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblUserRoles_tblRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblBikeCar_tblVendor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblBikeCarRecord_tblBikeCar" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblBooking_tblBikeCar" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblStock_tblBikeCar" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblCustomerRecord_tblBikeCarRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblCustomerRecord_tblBooking" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblPayment_tblBooking" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblVendor_tblCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblPayment_tblCustomerRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblFaqQA_tblFaqHeading" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblSubMenu_tblMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineCarBikeRentalDBModel.FK_tblUserRoles_tblUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

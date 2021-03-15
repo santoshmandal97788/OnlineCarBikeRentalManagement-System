@@ -1,0 +1,74 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.SubMenuViewModel
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "SubMenu", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.SubMenuId)
+
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Menu Name</label>
+        <div class="col-sm-10">
+
+            @Html.DropDownListFor(model => model.MenuId, new SelectList(ViewBag.menu, "MenuId", "MenuName"), "Select Menu", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MenuId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.SubMenuName, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+
+            @Html.TextBoxFor(model => model.SubMenuName, new { @class = "form-control", @placeholder = "Enter SubMenu Name" })
+            @Html.ValidationMessageFor(model => model.SubMenuName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.DropDownListFor(model => model.VendorId, new SelectList(ViewBag.vendor, "VendorId", "VendorName"), "Select Vendor", new { @class = "form-control" })*@
+
+            @Html.DropDownListFor(model => model.ControllerName, new SelectList(ViewBag.Controller, "ControllerName", "ControllerName"), "Choose ControllerName ", new { @class = "form-control", id = "FuelUsed" })
+            @*@Html.EditorFor(model => model.FuelUsed, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter FuelUsed" } })*@
+            @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+
+            @Html.LabelFor(model => model.ControllerName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.ControllerName, new { @class = "form-control", @placeholder = "Enter Controller Name" })
+
+                @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.ActionName, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+
+            @Html.TextBoxFor(model => model.ActionName, new { @class = "form-control", @placeholder = "Enter Action Name" })
+            @Html.ValidationMessageFor(model => model.ActionName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+}
+

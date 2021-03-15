@@ -1,0 +1,78 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.TestimonialViewModel
+
+@{
+    ViewBag.Title = "DeleteTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript">
+    function showimagepreview1(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#smimg').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+    function showimagepreview2(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#lgimg').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<br />
+<h2 class="text-center">DeleteTestimonial</h2>
+<h3 class="text-center">Are you sure you want to delete this?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control" }) <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paragraph)
+        </dt>
+
+        <dd>
+            @Html.TextBoxFor(model => model.Paragraph, new { @class = "form-control" }) <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.TextBoxFor(model => model.Username, new { @class = "form-control" }) <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img id="smimg" src="~/img/Testimonial/@Model.Image" height="100" width="90" />
+            @*@Html.DisplayNameFor(model => model.Image)*@
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:190px;">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <button type="button" class="btn btn-info">@Html.ActionLink("Back to List", "Index")</button>
+        </div>
+    }
+</div>

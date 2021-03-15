@@ -1,0 +1,51 @@
+﻿@model IEnumerable<OnlineCarBikeRentalSystem.Models.ViewModel.TestimonialViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<button type="button" class="btn btn-info" style="margin-left:30px;"> @Html.ActionLink("Add New Testimonial", "AddNewTestimonial")</button>
+<h1 class="text-center">Testimonial List</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paragraph)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paragraph)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTestimonial", new { id = item.Id }, new { @class = "btn btn-info" })|
+            @Html.ActionLink("Delete", "DeleteTestimonial", new { id = item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+
+</table>
+<br />

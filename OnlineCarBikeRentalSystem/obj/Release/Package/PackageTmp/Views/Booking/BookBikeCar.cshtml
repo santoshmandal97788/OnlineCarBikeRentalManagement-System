@@ -1,0 +1,122 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.BookingViewModel
+ 
+@{
+    ViewBag.Title = "BookBikeCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Slider
+{
+    <!--== Page Title Area Start ==-->
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Contact Us</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+    <!--== Page Title Area End ==-->
+
+}
+<section id="lgoin-page-wrap" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 m-auto">
+                <div class="login-page-content" style="background-color:#ffd000">
+                    <h3>Booking Details</h3>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md">Bike/Car Name</label>
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(model => model.VehicleId, new SelectList(ViewBag.bikecar, "VehicleId", "Bike_CarName"), "Select Bike/Car", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PickUpDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.PickUpDate, new { htmlAttributes = new { @class = "form-control", @Type = "date" } })
+                                    @Html.ValidationMessageFor(model => model.PickUpDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.ReturnDate, new { htmlAttributes = new { @class = "form-control", @Type = "date" } })
+                                    @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    <label class="control-label col-md">User Name</label>
+                                    <div class="col-md-12">
+                                        @Html.DropDownListFor(model => model.UserId, new SelectList(ViewBag.users, "UserId", "Username"), "Select UserName", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                                    </div>
+                            </div>*@
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md">Hire Details</label>
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(model => model.HireDetails, new SelectList(ViewBag.hire, "Name", "Name"), "Choose Hire Details", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.HireDetails, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-12">
+                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                    @ViewBag.Message
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

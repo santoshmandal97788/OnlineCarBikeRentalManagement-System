@@ -1,0 +1,31 @@
+﻿@foreach (var item in Model)
+{
+    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">*@
+    <section>
+        <hr />
+        <div>
+            <h3>@item.Fullname</h3>
+        </div>
+        <div>
+            <p>@item.Comment</p>
+        </div>
+        <div class="like">
+            
+          
+                    <a href="#">REPLY</a>
+              
+           
+                  
+            
+
+            
+        </div>
+        <hr />
+    </section>
+    <style> 
+    .like i{
+       font-size:35px;
+       margin-left:10px;
+    }
+    </style>
+}

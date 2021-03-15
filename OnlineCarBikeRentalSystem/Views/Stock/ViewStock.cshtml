@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "ViewStock";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+       Stock List
+    </h1>
+
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+
+
+                    <table id="employeeTable" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>StockId</th>
+                                <th>VehicleName</th>
+                                <th>Engiene CC</th>
+                                <th>No.Of Stocks</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+
+    <script>
+        var Popup, dataTable, vehicleid;
+        $(document).ready(function () {
+
+            $("#employeeTable").DataTable(
+                {
+                    "ajax": {
+                        "url": "/Stock/GetData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "StockId" },
+                        { "data": "VehicleName" },
+                        { "data": "EngieneCC" },
+                        { "data": "TotalBike_Car" },
+
+
+
+                        ],
+                        "language": {
+
+                            "emptyTable": "No data found, Please click on <b>Add New Bike/Car</b> Button"
+                        },
+
+                        "buttons": [
+                            {
+                                extend: 'copy',
+                                className: 'copyButton',
+                                text: '<i class="fa fa-clone"></i> Copy'
+                            },
+                            {
+                                extend: 'excel',
+                                text: '<i class="fa fa-file-excel-o"></i> Excel'
+                            },
+                            {
+                                extend: 'pdf',
+                                text: '<i class="fa fa-file-pdf-o"></i> Pdf'
+                            },
+                            {
+                                extend: 'csv',
+                                text: '<i class="fa fa-file-excel-o"></i> CSV'
+                            },
+                            {
+                                extend: 'print',
+                                text: '<i class="fa fa-print"></i> Print',
+                                customize: function (win) {
+                                    $(win.document.body)
+                                        .css('font-size', '10pt')
+                                        .prepend(
+                                            '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
+                                        );
+
+                                    $(win.document.body).find('table')
+                                        .addClass('compact')
+                                        .css('font-size', 'inherit');
+                                }
+                            }
+
+                        ]
+
+                    });
+                });
+
+        
+
+    </script>
+}
+
+
+
+
+

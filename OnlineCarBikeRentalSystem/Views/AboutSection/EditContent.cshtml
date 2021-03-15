@@ -1,0 +1,163 @@
+﻿@model OnlineCarBikeRentalSystem.Models.ViewModel.AboutSectionViewModel
+
+@{
+    ViewBag.Title = "EditContent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript">
+    function showimagepreview1(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#smimg').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+    function showimagepreview2(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#lgimg').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<br />
+<h2 class="text-center">EditContent</h2>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+
+@using (Html.BeginForm("EditContent", "AboutSection", FormMethod.Post, new { @enctype = "multipart/form-data", @onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.AboutUsId)
+
+    @if (Model.AboutUsId == 1)
+    {
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubHeadingParagraph, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubHeadingParagraph, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubHeadingParagraph, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextArea("Content", new { @class = "ckeditor", @id = "aboutme" })
+                <script>
+                    var editor = CKEDITOR.instances["aboutme"];
+                    if (editor) { editor.destroy(true); }
+                    CKEDITOR.replace("aboutme");
+                </script>
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <div class="col-md-10">
+                    <img src="~/img/AboutUs/@Model.Image" height="100" width="100" style="margin-left:194px"/>
+                    @Html.HiddenFor(model => model.Image)
+                </div>
+            </div>
+
+            <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    (Size 250*300)
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Image, new { @Type = "file", @class = "form-control", @onchange = "showimagepreview1(this)" })
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            (Size 250*300)
+            <div class="col-md-10">
+                <img id="smimg" src="/img/AboutUs/@Model.Image" height="100" width="90" />
+                @Html.TextBoxFor(model => model.Image, new { @Type = "file", @class = "form-control", @onchange = "showimagepreview1(this)" })
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Icon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CardHeading, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CardHeading, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CardHeading, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CardParagraph, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextArea("CardParagraph", new { @class = "ckeditor", @id = "card" })
+                <script>
+                    var editor = CKEDITOR.instances["card"];
+                    if (editor) { editor.destroy(true); }
+                    CKEDITOR.replace("card");
+                </script>
+                @Html.ValidationMessageFor(model => model.CardParagraph, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Icon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CardHeading, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CardHeading, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CardHeading, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CardParagraph, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextArea("CardParagraph", new { @class = "ckeditor", @id = "card" })
+                <script>
+                    var editor = CKEDITOR.instances["card"];
+                    if (editor) { editor.destroy(true); }
+                    CKEDITOR.replace("card");
+                </script>
+                @Html.ValidationMessageFor(model => model.CardParagraph, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+            <button type="button" class="btn btn-info">@Html.ActionLink("Back to List", "Index")</button>
+        </div>
+    </div>
+</div>
+}
+<br />
+
